@@ -109,7 +109,7 @@ let genFlexMessage = (ledOne, ledTwo) => {
       "type": "bubble",
       "hero": {
         "type": "image",
-        "url": "https://www.ihome108.com/wp-content/uploads/2017/05/home-slide-01.jpg",
+        "url": "https://sv1.picz.in.th/images/2020/01/10/RTssDv.jpg",
         "size": "full",
         "aspectRatio": "20:13",
         "aspectMode": "cover",
