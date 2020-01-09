@@ -53,7 +53,7 @@ console.log(`Received '${message}' on '${topic}`);
 app.post('/webhook', async (req, res) => {
 const message = req.body.events[0].message.text;
   const reply_token = req.body.events[0].replyToken;
-  const TOKEN = `x90xrF3RZj23i8Ff+uSrNrn9KzXdHV6+Klpu0b4ia7l+PSFcdTnOdaNUBEe0mqvAC8fXMd7Z6+1OS0D9GRJYyFcNYp++5dQXhUEJ6Msc2Zs6/BtXH1Q56RVPmcmSOFobyjBzZtpw1xy0zUkr2vWuswdB04t89/1O/w1cDnyilFU=`; // Token ที่ได้จาก Channel access token
+  const TOKEN = 'iaUUggyLwJ7RWAwAsaW47CJtUjzh8bkbTUbdvHCp6jqpZzsV/IdhoHt3IdmKGSkkC8fXMd7Z6+1OS0D9GRJYyFcNYp++5dQXhUEJ6Msc2ZtSrNJqjN22cJaBNm/iPvzokM7o8LQm9OeI42H41+fExwdB04t89/1O/w1cDnyilFU='; // Token ที่ได้จาก Channel access token
   const HEADERS = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${TOKEN}`
