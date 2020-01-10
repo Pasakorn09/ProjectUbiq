@@ -72,11 +72,11 @@ if (message == 'เปิดไฟ หลังบ้าน' || message == 'ป�
       await mqttMessage(LED_TOPIC, 'LEDOFF_TWO');
     }
   }
-if (message == 'เปิดไฟ กลางบ้าน' || message == 'ปิดไฟ กลางบ้าน') {
+if (message == 'เปิดไฟ กลางบ้าน' || message == 'ปิดไฟ กลางบ้าน') {    //Add LED_THREE
     if (message == 'เปิดไฟ กลางบ้าน') {
-      await mqttMessage(LED_TOPIC, 'LEDON_THREE');
+      await mqttMessage(LED_TOPIC, 'LEDON_THREE');   //OPEN
     } else {
-      await mqttMessage(LED_TOPIC, 'LEDON_THREE');
+      await mqttMessage(LED_TOPIC, 'LEDONF_THREE');   //CLOSE
     }
   }
 mqttMessage(LED_TOPIC, 'GET');
@@ -86,7 +86,7 @@ if (message == 'สถานะทั้งหมด') {
     await checkStatus();
   }
 console.log(status);
-  const objectMessage = genFlexMessage(status[0], status[1],status[2]);
+  const objectMessage = genFlexMessage(status[0], status[1],status[2]);   //ADD STATUS
 const body = JSON.stringify({
     replyToken: reply_token,
     messages: [
