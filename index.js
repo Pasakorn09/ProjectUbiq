@@ -72,6 +72,13 @@ if (message == 'เปิดไฟ หลังบ้าน' || message == 'ป�
       await mqttMessage(LED_TOPIC, 'LEDOFF_TWO');
     }
   }
+if (message == 'เปิดไฟ กลางบ้าน' || message == 'ปิดไฟ กลางบ้าน') {
+    if (message == 'เปิดไฟ กลางบ้าน') {
+      await mqttMessage(LED_TOPIC, 'LEDON_THREE');
+    } else {
+      await mqttMessage(LED_TOPIC, 'LEDON_THREE');
+    }
+  }
 mqttMessage(LED_TOPIC, 'GET');
 if (message == 'สถานะทั้งหมด') {
     await checkStatus();
@@ -101,7 +108,7 @@ let mqttMessage = async (topic, message) => {
 let checkStatus = async () => {
   await new Promise(done => setTimeout(done, 3000));
 }
-let genFlexMessage = (ledOne, ledTwo) => {
+let genFlexMessage = (ledOne, ledTwo , ledThree) => {
   return {
     "type": "flex",
     "altText": "สถานะระบบไฟ",
@@ -173,6 +180,28 @@ let genFlexMessage = (ledOne, ledTwo) => {
                 "color": (ledTwo == true) ? "#FF0000" : "#000000",
               }
             ]
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "flex": 1,
+            "margin": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ไฟกลางบ้าน",
+                "align": "start",
+                "gravity": "top",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": (ledThree == true) ? "Open" : "Close",
+                "align": "start",
+                "weight": "bold",
+                "color": (ledThree == true) ? "#FF0000" : "#000000",
+              }
+            ]
           }
         ]
       },
@@ -198,6 +227,16 @@ let genFlexMessage = (ledOne, ledTwo) => {
               "type": "message",
               "label": `${(ledTwo == true) ? "ปิดไฟ" : "เปิดไฟ"}หลังบ้าน`,
               "text": `${(ledTwo == true) ? "ปิดไฟ" : "เปิดไฟ"} หลังบ้าน`
+            },
+            "height": "sm",
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": `${(ledThree == true) ? "ปิดไฟ" : "เปิดไฟ"}กลางบ้าน`,
+              "text": `${(ledThree == true) ? "ปิดไฟ" : "เปิดไฟ"} กลางบ้าน`
             },
             "height": "sm",
             "style": "link"
