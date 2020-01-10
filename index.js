@@ -86,7 +86,7 @@ if (message == 'สถานะทั้งหมด') {
     await checkStatus();
   }
 console.log(status);
-  const objectMessage = genFlexMessage(status[0], status[1]);
+  const objectMessage = genFlexMessage(status[0], status[1],status[2]);
 const body = JSON.stringify({
     replyToken: reply_token,
     messages: [
