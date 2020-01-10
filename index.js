@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // STATUS LED
-let status = [false, false,false];   //Add Status
+let status = [false, false,false,false];   //Add Status
 // TOPIC
 const LED_TOPIC = `/ESP/LED`;
 // Create a MQTT Client
@@ -79,14 +79,21 @@ if (message == 'เปิดไฟ กลางบ้าน' || message == 'ป�
       await mqttMessage(LED_TOPIC, 'LEDOFF_THREE');   //CLOSE
     }
   }
+if (message == 'เปิดไฟ ทั้งหมด' || message == 'ปิดไฟ ทั้งหมด') {    //Add LED_ALL
+    if (message == 'เปิดไฟ ทั้งหมด') {
+      await mqttMessage(LED_TOPIC, 'LEDON_ALL');   //OPEN
+    } else {
+      await mqttMessage(LED_TOPIC, 'LEDOFF_ALL');   //CLOSE
+    }
+  }
 mqttMessage(LED_TOPIC, 'GET');
-if (message == 'สถานะทั้งหมด') {
+if (message == 'สถานะ') {
     await checkStatus();
   } else {
     await checkStatus();
   }
 console.log(status);
-  const objectMessage = genFlexMessage(status[0], status[1],status[2]);   //ADD STATUS
+  const objectMessage = genFlexMessage(status[0], status[1],status[2],status[3]);   //ADD STATUS
 const body = JSON.stringify({
     replyToken: reply_token,
     messages: [
@@ -108,7 +115,7 @@ let mqttMessage = async (topic, message) => {
 let checkStatus = async () => {
   await new Promise(done => setTimeout(done, 3000));
 }
-let genFlexMessage = (ledOne, ledTwo , ledThree) => {
+let genFlexMessage = (ledOne, ledTwo , ledThree,ledAll) => {
   return {
     "type": "flex",
     "altText": "สถานะระบบไฟ",
@@ -202,6 +209,28 @@ let genFlexMessage = (ledOne, ledTwo , ledThree) => {
                 "color": (ledThree == true) ? "#FF0000" : "#000000",
               }
             ]
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "flex": 1,
+            "margin": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ไฟทั้งหมด",
+                "align": "start",
+                "gravity": "top",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": (ledAll == true) ? "Open" : "Close",
+                "align": "start",
+                "weight": "bold",
+                "color": (ledAll == true) ? "#FF0000" : "#000000",
+              }
+            ]
           }
         ]
       },
@@ -237,6 +266,16 @@ let genFlexMessage = (ledOne, ledTwo , ledThree) => {
               "type": "message",
               "label": `${(ledThree == true) ? "ปิดไฟ" : "เปิดไฟ"}กลางบ้าน`,
               "text": `${(ledThree == true) ? "ปิดไฟ" : "เปิดไฟ"} กลางบ้าน`
+            },
+            "height": "sm",
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": `${(ledAll == true) ? "ปิดไฟ" : "เปิดไฟ"}ทั้งหมด`,
+              "text": `${(ledAll == true) ? "ปิดไฟ" : "เปิดไฟ"} ทั้งหมด`
             },
             "height": "sm",
             "style": "link"
