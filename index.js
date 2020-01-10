@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // STATUS LED
-let status = [false, false];
+let status = [false, false,false];   //Add Status
 // TOPIC
 const LED_TOPIC = `/ESP/LED`;
 // Create a MQTT Client
