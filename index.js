@@ -76,7 +76,7 @@ if (message == 'เปิดไฟ กลางบ้าน' || message == 'ป�
     if (message == 'เปิดไฟ กลางบ้าน') {
       await mqttMessage(LED_TOPIC, 'LEDON_THREE');   //OPEN
     } else {
-      await mqttMessage(LED_TOPIC, 'LEDONF_THREE');   //CLOSE
+      await mqttMessage(LED_TOPIC, 'LEDOFF_THREE');   //CLOSE
     }
   }
 mqttMessage(LED_TOPIC, 'GET');
