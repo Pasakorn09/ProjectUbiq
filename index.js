@@ -81,9 +81,9 @@ if (message == 'เปิดไฟ กลางบ้าน' || message == 'ป�
   }
 if (message == 'เปิดไฟ ทั้งหมด' || message == 'ปิดไฟ ทั้งหมด') {    //Add LED_ALL
     if (message == 'เปิดไฟ ทั้งหมด') {
-      await mqttMessage(LED_TOPIC, 'LEDON_ONE');   //OPEN
+      await mqttMessage(LED_TOPIC, 'LEDON_ALL');   //OPEN
     } else {
-      await mqttMessage(LED_TOPIC, 'LEDOFF_ONE');   //CLOSE
+      await mqttMessage(LED_TOPIC, 'LEDOFF_ALL');   //CLOSE
     }
   }
 mqttMessage(LED_TOPIC, 'GET');
