@@ -209,28 +209,6 @@ let genFlexMessage = (ledOne, ledTwo , ledThree,ledAll) => {
                 "color": (ledThree == true) ? "#FF0000" : "#000000",
               }
             ]
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "flex": 1,
-            "margin": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": "ไฟทั้งหมด",
-                "align": "start",
-                "gravity": "top",
-                "weight": "bold"
-              },
-              {
-                "type": "text",
-                "text": (ledAll == true) ? "Open" : "Close",
-                "align": "start",
-                "weight": "bold",
-                "color": (ledAll == true) ? "#FF0000" : "#000000",
-              }
-            ]
           }
         ]
       },
@@ -274,8 +252,18 @@ let genFlexMessage = (ledOne, ledTwo , ledThree,ledAll) => {
             "type": "button",
             "action": {
               "type": "message",
-              "label": `${(ledAll == true) ? "ปิดไฟ" : "เปิดไฟ"}ทั้งหมด`,
-              "text": `${(ledAll == true) ? "ปิดไฟ" : "เปิดไฟ"} ทั้งหมด`
+              "label": `เปิดไฟทั้งหมด`,
+              "text": `เปิดไฟ ทั้งหมด`
+            },
+            "height": "sm",
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": `ปิดไฟทั้งหมด`,
+              "text": `ปิดไฟ ทั้งหมด`
             },
             "height": "sm",
             "style": "link"
