@@ -123,7 +123,7 @@ let genFlexMessage = (ledOne, ledTwo , ledThree,ledAll) => {
       "type": "bubble",
       "hero": {
         "type": "image",
-        "url": "https://sv1.picz.in.th/images/2020/01/10/RTssDv.jpg",
+        "url": "https://sv1.picz.in.th/images/2020/02/02/RM0weI.jpg",
         "size": "full",
         "aspectRatio": "20:13",
         "aspectMode": "cover",
